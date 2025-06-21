@@ -58,12 +58,12 @@ public class TaskController {
         @RequestParam(defaultValue = "0") int page,
         @RequestParam(defaultValue = "10") int size
     ) {
-        return taskService.getTasks(
+    return taskService.getTasks(
             projectId,
             LocalDate.parse(startDate),
             LocalDate.parse(endDate),
             sortBy,
-            PageRequest.of(page, size)
-        );
+            PageRequest.of(page, size, Sort.by(sortBy))
+    );
     }
 }
