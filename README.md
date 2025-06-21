@@ -1,4 +1,4 @@
-# My Spring Boot Application
+# Project Management API
 
 ## Overview
 This project is a simple Project Management REST API built with Spring Boot.  
@@ -9,9 +9,6 @@ The application uses an H2 in-memory database for easy setup and testing, and ex
 ## Configuration
 - **src/main/resources/application.properties**: Contains configuration properties for the Spring Boot application, including database connection settings and JPA configurations.
 
-## Docker Configuration
-- **Dockerfile**: Instructions for building a Docker image for the Spring Boot application.
-- **.dockerignore**: Specifies files and directories to ignore when building the Docker image.
 
 ## Build and Run
 
@@ -25,8 +22,7 @@ The application uses an H2 in-memory database for easy setup and testing, and ex
 2. **Run the application:**
    ```
    ./gradlew bootRun
-   ```
-   ```
+
 
 ## Accessing the Application
 Once the application is running, you can access it at [http://localhost:8080](http://localhost:8080).
