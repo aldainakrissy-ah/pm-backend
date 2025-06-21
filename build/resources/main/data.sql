@@ -3,9 +3,91 @@ INSERT INTO project (id, name) VALUES (1, 'Project Alpha');
 INSERT INTO project (id, name) VALUES (2, 'Project Beta');
 INSERT INTO project (id, name) VALUES (3, 'Project Gamma');
 
--- Insert sample tasks (make sure project_id matches an existing project)
+-- Insert 20 sample tasks
 INSERT INTO task (name, priority, due_date, assignee, status, project_id) VALUES
 ('Design UI', 1, '2025-07-01', 'Alice', 'PENDING', 1),
 ('Develop Backend', 2, '2025-07-05', 'Bob', 'IN_PROGRESS', 1),
 ('Write Docs', 3, '2025-07-10', 'Carol', 'COMPLETED', 2),
-('Testing', 2, '2025-07-15', 'Dave', 'PENDING', 3);
+('Testing', 2, '2025-07-15', 'Dave', 'PENDING', 3),
+('Setup CI/CD', 1, '2025-07-02', 'Eve', 'PENDING', 1),
+('Database Migration', 2, '2025-07-03', 'Frank', 'IN_PROGRESS', 2),
+('API Integration', 3, '2025-07-04', 'Grace', 'COMPLETED', 3),
+('Frontend Refactor', 2, '2025-07-06', 'Heidi', 'PENDING', 1),
+('Performance Testing', 1, '2025-07-07', 'Ivan', 'IN_PROGRESS', 2),
+('Security Audit', 2, '2025-07-08', 'Judy', 'PENDING', 3),
+('User Feedback', 3, '2025-07-09', 'Karl', 'COMPLETED', 1),
+('Bug Fixing', 1, '2025-07-11', 'Leo', 'IN_PROGRESS', 2),
+('Release v1.0', 2, '2025-07-12', 'Mallory', 'PENDING', 3),
+('Sprint Planning', 3, '2025-07-13', 'Niaj', 'COMPLETED', 1),
+('Retrospective', 2, '2025-07-14', 'Olivia', 'PENDING', 2),
+('Code Review', 1, '2025-07-16', 'Peggy', 'IN_PROGRESS', 3),
+('Documentation Update', 2, '2025-07-17', 'Quentin', 'PENDING', 1),
+('UX Improvements', 3, '2025-07-18', 'Ruth', 'COMPLETED', 2),
+('Stakeholder Meeting', 1, '2025-07-19', 'Sybil', 'IN_PROGRESS', 3),
+('Hotfix Patch', 2, '2025-07-20', 'Trent', 'PENDING', 1);
+-- Insert more sample tasks for pagination testing
+INSERT INTO task (name, priority, due_date, assignee, status, project_id) VALUES
+('Task a', 1, '2025-07-21', 'Uma', 'PENDING', 2),
+('Task b', 2, '2025-07-22', 'Victor', 'IN_PROGRESS', 3),
+('Task c', 3, '2025-07-23', 'Wendy', 'COMPLETED', 1),
+('Task d', 2, '2025-07-24', 'Xander', 'PENDING', 2),
+('Task e', 1, '2025-07-25', 'Yara', 'IN_PROGRESS', 3),
+('Task f', 3, '2025-07-26', 'Zane', 'COMPLETED', 1),
+('Task g', 2, '2025-07-27', 'Amy', 'PENDING', 2),
+('Task h', 1, '2025-07-28', 'Ben', 'IN_PROGRESS', 3),
+('Task i', 3, '2025-07-29', 'Cleo', 'COMPLETED', 1),
+('Task j', 2, '2025-07-30', 'Drew', 'PENDING', 2),
+('Task k', 1, '2025-07-31', 'Elle', 'IN_PROGRESS', 3),
+('Task l', 3, '2025-08-01', 'Finn', 'COMPLETED', 1),
+('Task m', 2, '2025-08-02', 'Gina', 'PENDING', 2),
+('Task n', 1, '2025-08-03', 'Hank', 'IN_PROGRESS', 3),
+('Task o', 3, '2025-08-04', 'Ivy', 'COMPLETED', 1),
+('Task p', 2, '2025-08-05', 'Jake', 'PENDING', 2),
+('Task q', 1, '2025-08-06', 'Kira', 'IN_PROGRESS', 3),
+('Task r', 3, '2025-08-07', 'Liam', 'COMPLETED', 1),
+('Task s', 2, '2025-08-08', 'Mona', 'PENDING', 2),
+('Task t', 1, '2025-08-09', 'Nate', 'IN_PROGRESS', 3);
+
+INSERT INTO task (name, priority, due_date, assignee, status, project_id) VALUES
+('Task u', 1, '2025-07-21', 'Uma', 'PENDING', 1),
+('Task v', 2, '2025-07-22', 'Victor', 'IN_PROGRESS', 1),
+('Task w', 3, '2025-07-23', 'Wendy', 'COMPLETED', 1),
+('Task x', 2, '2025-07-24', 'Xander', 'PENDING', 1),
+('Task y', 1, '2025-07-25', 'Yara', 'IN_PROGRESS', 1),
+('Task z', 3, '2025-07-26', 'Zane', 'COMPLETED', 1),
+('Task 27a', 2, '2025-07-27', 'Amy', 'PENDING', 1),
+('Task 28b', 1, '2025-07-28', 'Ben', 'IN_PROGRESS', 1),
+('Task 29c', 3, '2025-07-29', 'Cleo', 'COMPLETED', 1),
+('Task 30d', 2, '2025-07-30', 'Drew', 'PENDING', 1),
+('Task 31e', 1, '2025-07-31', 'Elle', 'IN_PROGRESS', 1),
+('Task 32f', 3, '2025-08-01', 'Finn', 'COMPLETED', 1),
+('Task 33a', 2, '2025-08-02', 'Gina', 'PENDING', 1),
+('Task 34b', 1, '2025-08-03', 'Hank', 'IN_PROGRESS', 1),
+('Task 35v', 3, '2025-08-04', 'Ivy', 'COMPLETED', 1),
+('Task 36c', 2, '2025-08-05', 'Jake', 'PENDING', 1),
+('Task 37x', 1, '2025-08-06', 'Kira', 'IN_PROGRESS', 1),
+('Task 38s', 3, '2025-08-07', 'Liam', 'COMPLETED', 1),
+('Task 39s', 2, '2025-08-08', 'Mona', 'PENDING', 1),
+('Task 40s', 1, '2025-08-09', 'Nate', 'IN_PROGRESS', 1);
+
+INSERT INTO task (name, priority, due_date, assignee, status, project_id) VALUES
+('Task 21', 1, '2025-07-21', 'Uma', 'PENDING', 1),
+('Task 22', 2, '2025-07-22', 'Victor', 'IN_PROGRESS', 1),
+('Task 23', 3, '2025-07-23', 'Wendy', 'COMPLETED', 1),
+('Task 24', 2, '2025-07-24', 'Xander', 'PENDING', 1),
+('Task 25', 1, '2025-07-25', 'Yara', 'IN_PROGRESS', 1),
+('Task 26', 3, '2025-07-26', 'Zane', 'COMPLETED', 1),
+('Task 27', 2, '2025-07-27', 'Amy', 'PENDING', 1),
+('Task 28', 1, '2025-07-28', 'Ben', 'IN_PROGRESS', 1),
+('Task 29', 3, '2025-07-29', 'Cleo', 'COMPLETED', 1),
+('Task 30', 2, '2025-07-30', 'Drew', 'PENDING', 1),
+('Task 31', 1, '2025-07-31', 'Elle', 'IN_PROGRESS', 1),
+('Task 32', 3, '2025-08-01', 'Finn', 'COMPLETED', 1),
+('Task 33', 2, '2025-08-02', 'Gina', 'PENDING', 1),
+('Task 34', 1, '2025-08-03', 'Hank', 'IN_PROGRESS', 1),
+('Task 35', 3, '2025-08-04', 'Ivy', 'COMPLETED', 1),
+('Task 36', 2, '2025-08-05', 'Jake', 'PENDING', 1),
+('Task 37', 1, '2025-08-06', 'Kira', 'IN_PROGRESS', 1),
+('Task 38', 3, '2025-08-07', 'Liam', 'COMPLETED', 1),
+('Task 39', 2, '2025-08-08', 'Mona', 'PENDING', 1),
+('Task 40', 1, '2025-08-09', 'Nate', 'IN_PROGRESS', 1);
