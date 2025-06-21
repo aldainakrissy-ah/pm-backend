@@ -8,6 +8,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import com.example.projectmanagement.model.Project;
+import java.util.List;
+import org.springframework.data.domain.Sort;
+
 
 /**
  * REST controller for managing tasks within a specific project.
@@ -20,7 +26,7 @@ import java.time.LocalDate;
  */
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/projects/{projectId}/tasks")
+@RequestMapping("/api/projects")
 public class TaskController {
 
     @Autowired
@@ -33,7 +39,7 @@ public class TaskController {
      * @param task the task object to be created
      * @return the created Task object
      */
-    @PostMapping
+    @PostMapping("/{projectId}/tasks")
     public Task createTask(@PathVariable Long projectId, @RequestBody Task task) {
         return taskService.createTask(projectId, task);
     }
@@ -49,7 +55,7 @@ public class TaskController {
      * @param size the number of tasks per page (default is 10)
      * @return a {@link Page} of {@link Task} objects matching the criteria
      */
-    @GetMapping
+    @GetMapping("/{projectId}/tasks")
     public Page<Task> getTasks(
         @PathVariable Long projectId,
         @RequestParam String startDate,
@@ -65,5 +71,10 @@ public class TaskController {
             sortBy,
             PageRequest.of(page, size, Sort.by(sortBy))
     );
+    }
+    
+    @GetMapping
+    public List<Project> getProjects() {
+        return taskService.getProjects();
     }
 }

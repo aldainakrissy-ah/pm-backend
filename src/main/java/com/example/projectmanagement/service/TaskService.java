@@ -7,11 +7,11 @@ import com.example.projectmanagement.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.NoSuchElementException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.List;
 
 /**
  * Service class for managing tasks within projects.
@@ -74,5 +74,9 @@ public class TaskService {
         Sort sort = Sort.by(Sort.Direction.ASC, sortBy);
         Pageable sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
         return taskRepository.findByProjectAndDateRange(projectId, start, end, sortedPageable);
+    }
+    
+    public List<Project> getProjects() {
+        return projectRepository.findAll();
     }
 }
